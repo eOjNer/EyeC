@@ -50,6 +50,6 @@ while True:
     if x >= 10:
         O = 'S'
     if O == 'S':
-        s = f'\nWOW!! Rank {O}!! Jetzt beginnt der Weg zu Welt Rekord! Das sind 561796327157 Punkte!! Du brauchst also nur noch {x-561796327157} Punkte!!!!!!'
+        s = f'\nWOW!! Rank {O}!! Jetzt beginnt der Weg zu Welt Rekord! Das sind 561796327157 Punkte!! Du brauchst also nur noch {561796327157-x} Punkte, du hast ja {x}!!!!!!'
          
          

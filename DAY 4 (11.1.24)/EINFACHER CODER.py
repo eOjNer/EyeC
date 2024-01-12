@@ -28,7 +28,5 @@ Primnumber(lst)
 random.shuffle(lst)
 a = lst[random.randint(1,9592)]
 b = lst[random.randint(1,9592)]
-CODE = a * b
-print(CODE)
-if input() == a or b:
-    print('THAT\'S THE CODE')
+CODE1 = a * b
+e = (a-1)*(b-1)

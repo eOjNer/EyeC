@@ -1,0 +1,31 @@
+Die RSA-Verschlüsselung ist ein Verfahren, das auf der Schwierigkeit beruht, große Zahlen in ihre Primfaktoren zu zerlegen. Um eine Nachricht zu verschlüsseln und zu entschlüsseln, benötigt man ein Schlüsselpaar aus einem öffentlichen und einem privaten Schlüssel. Die Rechenschritte der RSA-Verschlüsselung sind wie folgt:
+
+Wähle zwei große Primzahlen p und q und berechne das Produkt n = p * q. Dies ist der Modulus, der Teil des öffentlichen Schlüssels ist.
+Berechne die Eulersche Phi-Funktion von n: φ(n) = (p - 1) * (q - 1). Dies ist die Anzahl der Zahlen, die kleiner als n und teilerfremd zu n sind.
+Wähle eine Zahl e, die zwischen 1 und φ(n) liegt und teilerfremd zu φ(n) ist. Dies ist der Exponent, der Teil des öffentlichen Schlüssels ist. Der öffentliche Schlüssel ist also (n, e).
+Berechne eine Zahl d, die das multiplikative Inverse von e modulo φ(n) ist. Das heißt, e * d = 1 (mod φ(n)). Dies ist der Exponent, der Teil des privaten Schlüssels ist. Der private Schlüssel ist also (n, d).
+Um eine Nachricht m zu verschlüsseln, die kleiner als n ist, berechne den Geheimtext c = m^e (mod n). Um eine Nachricht c zu entschlüsseln, berechne den Klartext m = c^d (mod n).
+Um die RSA-Verschlüsselung zu knacken, muss man entweder den privaten Schlüssel d oder die Primfaktoren p und q von n finden. Beides gilt als sehr schwierig, wenn n groß genug ist. Die gängigsten Methoden, um RSA zu knacken, sind:
+
+Faktorisierung von n mit Algorithmen wie dem Zahlkörpersieb oder der elliptischen Kurven-Methode. Diese Algorithmen werden immer effizienter, aber sie benötigen immer noch viel Rechenzeit und Speicherplatz, um n zu faktorisieren, wenn n mehrere tausend Bit lang ist.
+Berechnung des diskreten Logarithmus von e modulo φ(n) mit Algorithmen wie dem Index-Calculus oder dem Pollard-Rho-Algorithmus. Dies ist äquivalent zur Faktorisierung von n, da man aus dem diskreten Logarithmus p und q bestimmen kann. Auch diese Algorithmen sind sehr aufwendig, wenn n sehr groß ist.
+Ausnutzung von Schwachstellen in der Implementierung oder Anwendung von RSA, wie z.B. schlechte Wahl von p und q, zu kleine oder zu große Werte von e oder d, fehlerhafte Berechnung von m^e oder c^d, Seitenkanalangriffe, die Informationen über den privaten Schlüssel oder die Nachrichten preisgeben, oder Man-in-the-Middle-Angriffe, die den öffentlichen Schlüssel manipulieren.
+
+Berechnung des privaten Schlüssels: Der private Schlüssel besteht aus einem Wert d, der die Eigenschaft hat, dass e × d - 1 ein Vielfaches von φ(n) ist. Hierbei ist e der öffentliche Exponent und φ(n) die Eulersche φ-Funktion von n. In Formeln ausgedrückt, muss gelten: e × d = 1 (mod φ(n)). Dieses d kann immer bestimmt werden, wenn e mit der oben beschriebenen Einschränkung gewählt wurde – beispielsweise mit dem Erweiterten Euklidischen Algorithmus2.
+
+Entschlüsselung der Nachricht: Grundsätzlich werden bei diesem Verfahren keine Texte, sondern nur Zahlen ver- und entschlüsselt, die zwischen 0 und n - 1 liegen. Um eine verschlüsselte Nachricht m' mit dem privaten Schlüssel (n, d) zu entschlüsseln, wird m'' := (m')^d (mod n) berechnet2.
+
+
+Der erweiterte euklidische Algorithmus ist eine Methode aus dem mathematischen Teilgebiet der Zahlentheorie1. Er berechnet neben dem größten gemeinsamen Teiler (ggT) zweier natürlicher Zahlen a und b noch zwei ganze Zahlen s und t, die die folgende Gleichung erfüllen: ggT(a, b) = s*a + t*b2.
+
+Hier ist eine allgemeine Beschreibung des Algorithmus12:
+
+Initialisierung: Starten Sie mit zwei Paaren von Zahlen: (a, 1, 0) und (b, 0, 1). Das erste Element jedes Paares ist der aktuelle Wert, das zweite und dritte Element sind Koeffizienten, die darstellen, wie dieser Wert als Linearkombination der ursprünglichen Zahlen a und b ausgedrückt werden kann.
+
+Iteration: In jeder Iteration ersetzen Sie das größere Paar (x, s, t) durch (x - y*q, s - u*q, t - v*q), wobei q das Ergebnis der Division x // y ist und (y, u, v) das andere Paar ist. Wiederholen Sie diesen Schritt, bis eine der beiden Zahlen auf Null reduziert ist.
+
+Ergebnis: Die Koeffizienten des Paares, das nicht auf Null reduziert wurde, sind die gesuchten Zahlen s und t.
+
+Dieser Algorithmus ist sehr nützlich in vielen Bereichen der Mathematik, einschließlich der Lösung von diophantischen Gleichungen, der Berechnung von inversen Elementen in ganzzahligen Restklassenringen und der Implementierung von Verschlüsselungsalgorithmen wie RSA1.
+
+Bitte beachten Sie, dass es wichtig ist, die korrekten Berechnungen und Implementierungen durchzuführen, um genaue Ergebnisse zu erzielen. Es wird empfohlen, bei Bedarf zusätzliche Ressourcen oder Experten zu konsultieren12.

@@ -32,14 +32,14 @@ def power_mod(x, y, p):
     return res
 
 
-VERSCHLÜSSELT = [380204032, 503284375, 418195493, 550731776]
-n1 = 5408761692
-e = 5
+VERSCHLÜSSELT = [438976, 1030301, 1331000, 1331000]
+n = 1150446259
+e = 3
 
-d = finde_inverses(e, n1)
+d = finde_inverses(e, n)
 if d is None:
-    print(f"Es gibt keinen inversen Wert für {e} modulo {n1}, Sie müssen alles nochmal versuchen.")
+    print(f"Es gibt keinen inversen Wert für {e} modulo {n}, Sie müssen alles nochmal versuchen.")
 else:
-    ENTSCHLÜSSELT = [power_mod(ascii_value, d, n1) for ascii_value in VERSCHLÜSSELT]
+    ENTSCHLÜSSELT = [power_mod(ascii_value, d, n) for ascii_value in VERSCHLÜSSELT]
     nachricht = from_ascii(ENTSCHLÜSSELT)
     print(f"Ihre entschlüsselte Nachricht lautet: {nachricht}")
